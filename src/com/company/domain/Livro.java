@@ -1,12 +1,17 @@
 package com.company.domain;
 
-public class Livro {
-    public String titulo;
+public class Livro  implements LivroInterface{
+    private Fisico fisico;
 
     public Livro() {
     }
 
-    public Livro(String titulo) {
-        this.titulo = titulo;
+    public Livro(Fisico fisico) {
+        this.fisico = fisico;
+    }
+
+    @Override
+    public Fisico getLivro() {
+        return this.fisico;
     }
 }

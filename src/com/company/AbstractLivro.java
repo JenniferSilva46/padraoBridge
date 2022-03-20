@@ -1,5 +1,6 @@
 package com.company;
 
+import com.company.domain.Fisico;
 import com.company.domain.Livro;
 import com.company.domain.LivroInterface;
 
@@ -8,35 +9,33 @@ import java.util.Objects;
 public abstract class AbstractLivro{
     protected LivroInterface livroInterface;
     private Boolean verificarLivro;
-
-    private Livro livro = new Livro();
+    private Livro livro;
 
     public AbstractLivro(){
 
     }
 
-    public AbstractLivro(Livro livro, Boolean verificarLivro){
+    public AbstractLivro(Fisico livro, Boolean verificarLivro){
+        this.livro = new Livro(livro);
         this.verificarLivro = verificarLivro;
-        this.livro = livro;
     }
 
-    public AbstractLivro(Livro livro){
-        this.livro = livro;
+    public AbstractLivro(Fisico livro){
+        this.livro = new Livro(livro);
     }
 
     public void ConcluirEmprestimo(){
 
         if (!Objects.isNull(this.verificarLivro)){
-            System.out.print("Emprestimo do livro " + this.livro.titulo +  " foi realizado com sucesso!");
+            System.out.print("Emprestimo do livro " + this.livro.getLivro().getTitulo() +  " foi realizado com sucesso!");
         } else {
-            System.out.print("O livro " + this.livro.titulo + " não esta disponivel para emprestimo");
+            System.out.print("O livro " + this.livro.getLivro().getTitulo() + " não esta disponivel para emprestimo");
         }
 
-//        this.livro = new Livro();
     }
 
     public void ConcluirDevolucao(){
-        System.out.print("\nO livro " + this.livro.titulo + " foi devolvido com sucesso!");
+        System.out.print("\nO livro " + this.livro.getLivro().getTitulo() + " foi devolvido com sucesso!");
     }
 
 

@@ -2,9 +2,6 @@ package com.company.domain;
 
 public interface LivroInterface {
 
-    public void VerificarLivro(Boolean verificar);
+    public Fisico getLivro();
 
-    public void Devolver(String titulo);
-
-    public void Concluir();
 }
