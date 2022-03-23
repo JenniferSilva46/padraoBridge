@@ -24,20 +24,27 @@ public abstract class AbstractLivro{
         this.livro = new Livro(livro);
     }
 
-    public void ConcluirEmprestimo(){
+    public void ConcluirEmprestimo() {
 
-        if (!Objects.isNull(this.verificarLivro)){
-            System.out.print("Emprestimo do livro " + this.livro.getLivro().getTitulo() +  " foi realizado com sucesso!");
-        } else {
-            System.out.print("O livro " + this.livro.getLivro().getTitulo() + " não esta disponivel para emprestimo");
+        if (!Objects.isNull(this.livro)) {
+            if (!Objects.isNull(this.verificarLivro)) {
+                System.out.print("Emprestimo do livro " + this.livro.getLivro().getTitulo() + " foi realizado com sucesso!");
+            } else {
+                System.out.print("O livro " + this.livro.getLivro().getTitulo() + " não esta disponivel para emprestimo");
+            }
+        } else{
+            System.out.print("Livro não encontrado!");
         }
 
     }
 
-    public void ConcluirDevolucao(){
-        System.out.print("\nO livro " + this.livro.getLivro().getTitulo() + " foi devolvido com sucesso!");
+    public void ConcluirDevolucao() {
+
+        if (!Objects.isNull(this.livro)) {
+            System.out.print("\nO livro " + this.livro.getLivro().getTitulo() + " foi devolvido com sucesso!");
+        } else{
+            System.out.print("Livro não encontrado!");
+        }
     }
-
-
 
 }

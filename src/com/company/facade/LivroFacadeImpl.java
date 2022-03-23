@@ -5,19 +5,31 @@ import com.company.domain.Fisico;
 import com.company.domain.LivroDevolucao;
 import com.company.domain.LivroEmprestimo;
 
+import java.util.Objects;
+
 public class LivroFacadeImpl implements LivroFacade{
 
     @Override
     public void livroDevolucao(Fisico livro) {
         AbstractLivro devolucao = new LivroDevolucao(livro);
-        concluirDevolucao(devolucao);
+        if(!Objects.isNull(devolucao)){
+            concluirDevolucao(devolucao);
+        }
+        else{
+            System.out.print("Não foi possível realizar o emprestimo");
+        }
     }
 
     @Override
     public void livroEmprestimo(Fisico livro) {
-       Boolean verificado = verificarLivro(true);
+        Boolean verificado = verificarLivro(true);
         AbstractLivro emprestimo = new LivroEmprestimo(livro, verificado);
-        concluirEmprestimo(emprestimo);
+        if(!Objects.isNull(emprestimo)){
+            concluirEmprestimo(emprestimo);
+        }
+        else{
+            System.out.print("Não foi possível realizar o emprestimo");
+        }
     }
 
     @Override
